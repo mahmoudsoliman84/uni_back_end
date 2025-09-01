@@ -1,0 +1,1088 @@
+{
+	"info": {
+		"_postman_id": "university-system-collection",
+		"name": "University System API",
+		"description": "Complete API collection for testing the University Management System with Authentication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "0. Authentication & Authorization",
+			"item": [
+				{
+					"name": "Test Public Endpoint",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/auth/public/test",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "public", "test"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"admin\",\n  \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/login",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "login"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Teacher Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"teacher\",\n  \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/login",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "login"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Student Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"student\",\n  \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/login",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "login"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Registration",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"newuser\",\n  \"password\": \"password123\",\n  \"email\": \"newuser@university.com\",\n  \"firstName\": \"New\",\n  \"lastName\": \"User\",\n  \"role\": \"STUDENT\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/register",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "register"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Admin User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"newadmin\",\n  \"password\": \"password123\",\n  \"email\": \"newadmin@university.com\",\n  \"firstName\": \"New\",\n  \"lastName\": \"Admin\",\n  \"role\": \"ADMIN\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/admin/register",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "admin", "register"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Current User Info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/auth/me",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "me"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test Authentication Endpoint",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/auth/test",
+							"host": ["{{base_url}}"],
+							"path": ["api", "auth", "test"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "1. Faculty Management",
+			"item": [
+				{
+					"name": "Create Faculty",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"facultyName\": \"Computer Science\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/faculties",
+							"host": ["{{base_url}}"],
+							"path": ["api", "faculties"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Faculties",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/faculties",
+							"host": ["{{base_url}}"],
+							"path": ["api", "faculties"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Faculty by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/faculties/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "faculties", "1"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Faculty",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"facultyName\": \"Computer Science & Engineering\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/faculties/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "faculties", "1"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Faculty",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/faculties/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "faculties", "1"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2. Professor Management",
+			"item": [
+				{
+					"name": "Create Professor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"professorName\": \"Dr. John Smith\",\n  \"facultyId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/professors",
+							"host": ["{{base_url}}"],
+							"path": ["api", "professors"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Professors",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/professors",
+							"host": ["{{base_url}}"],
+							"path": ["api", "professors"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Professor by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/professors/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "professors", "1"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Professor",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"professorName\": \"Dr. Jane Doe\",\n  \"facultyId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/professors/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "professors", "1"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Professor",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/professors/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "professors", "1"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3. Course Management",
+			"item": [
+				{
+					"name": "Create Course",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"courseName\": \"Introduction to Programming\",\n  \"level\": 1,\n  \"facultyId\": 1,\n  \"professorId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/courses",
+							"host": ["{{base_url}}"],
+							"path": ["api", "courses"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Courses",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/courses",
+							"host": ["{{base_url}}"],
+							"path": ["api", "courses"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Course by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/courses/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "courses", "1"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Course",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"courseName\": \"Intro to Programming II\",\n  \"level\": 2,\n  \"facultyId\": 1,\n  \"professorId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/courses/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "courses", "1"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Course",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/courses/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "courses", "1"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "4. Student Management",
+			"item": [
+				{
+					"name": "Create Student",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"studentName\": \"Alice Johnson\",\n  \"level\": 1,\n  \"facultyId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/students",
+							"host": ["{{base_url}}"],
+							"path": ["api", "students"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Students",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/students",
+							"host": ["{{base_url}}"],
+							"path": ["api", "students"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Student by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/students/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "students", "1"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Student",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"studentName\": \"Alice Smith\",\n  \"level\": 2,\n  \"facultyId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/students/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "students", "1"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Student",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/students/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "students", "1"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "5. Enrollment Management",
+			"item": [
+				{
+					"name": "Create Enrollment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"studentId\": 1,\n  \"courseId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/enrollments",
+							"host": ["{{base_url}}"],
+							"path": ["api", "enrollments"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Enrollments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/enrollments",
+							"host": ["{{base_url}}"],
+							"path": ["api", "enrollments"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Enrollment by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/enrollments/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "enrollments", "1"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Enrollment",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"studentId\": 1,\n  \"courseId\": 2\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/enrollments/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "enrollments", "1"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Enrollment",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/enrollments/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "enrollments", "1"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "6. Grade Management",
+			"item": [
+				{
+					"name": "Create Grade",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"enrollmentId\": 1,\n  \"grade\": 85.5\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/grades",
+							"host": ["{{base_url}}"],
+							"path": ["api", "grades"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Grades",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/grades",
+							"host": ["{{base_url}}"],
+							"path": ["api", "grades"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Grade by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/grades/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "grades", "1"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Grade",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"grade\": 90.0\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/grades/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "grades", "1"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Grade",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/grades/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "grades", "1"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "7. Complete Workflow Test",
+			"item": [
+				{
+					"name": "Step 1: Create Faculty",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"facultyName\": \"Engineering\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/faculties",
+							"host": ["{{base_url}}"],
+							"path": ["api", "faculties"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 2: Create Professor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"professorName\": \"Dr. Sarah Wilson\",\n  \"facultyId\": 2\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/professors",
+							"host": ["{{base_url}}"],
+							"path": ["api", "professors"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 3: Create Course",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"courseName\": \"Data Structures\",\n  \"level\": 2,\n  \"facultyId\": 2,\n  \"professorId\": 2\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/courses",
+							"host": ["{{base_url}}"],
+							"path": ["api", "courses"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 4: Create Student",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"studentName\": \"Bob Davis\",\n  \"level\": 2,\n  \"facultyId\": 2\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/students",
+							"host": ["{{base_url}}"],
+							"path": ["api", "students"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 5: Enroll Student",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"studentId\": 2,\n  \"courseId\": 2\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/enrollments",
+							"host": ["{{base_url}}"],
+							"path": ["api", "enrollments"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 6: Assign Grade",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"enrollmentId\": 2,\n  \"grade\": 88.0\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/grades",
+							"host": ["{{base_url}}"],
+							"path": ["api", "grades"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 7: Verify Complete Record",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{auth_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/students/2/with-enrollments",
+							"host": ["{{base_url}}"],
+							"path": ["api", "students", "2", "with-enrollments"]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Set base URL for all requests",
+					"pm.environment.set('base_url', 'http://localhost:8080');",
+					"",
+					"// Auto-extract token from login responses",
+					"if (pm.request.url.path.includes('/auth/login') || pm.request.url.path.includes('/auth/register') || pm.request.url.path.includes('/auth/admin/register')) {",
+					"    pm.test('Extract token if login successful', function () {",
+					"        if (pm.response.code === 200) {",
+					"            const responseJson = pm.response.json();",
+					"            if (responseJson.token) {",
+					"                pm.environment.set('auth_token', responseJson.token);",
+					"                console.log('Token extracted and stored');",
+					"            }",
+					"        }",
+					"    });",
+					"}",
+					"",
+					"// Add Authorization header for protected endpoints",
+					"if (!pm.request.url.path.includes('/auth/') && pm.environment.get('auth_token')) {",
+					"    pm.request.headers.add({",
+					"        key: 'Authorization',",
+					"        value: 'Bearer ' + pm.environment.get('auth_token')",
+					"    });",
+					"}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Basic response validation",
+					"pm.test('Status code is 200, 201, or 204', function () {",
+					"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+					"});",
+					"",
+					"pm.test('Response time is less than 2000ms', function () {",
+					"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+					"});",
+					"",
+					"pm.test('Response has required headers', function () {",
+					"    pm.response.to.have.header('Content-Type');",
+					"});",
+					"",
+					"// Test for authentication errors",
+					"pm.test('Not unauthorized', function () {",
+					"    pm.expect(pm.response.code).to.not.equal(401);",
+					"});",
+					"",
+					"pm.test('Not forbidden', function () {",
+					"    pm.expect(pm.response.code).to.not.equal(403);",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "auth_token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
